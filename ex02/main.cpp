@@ -11,22 +11,25 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 int main()
 {
 	try 
 	{
-		Bureaucrat bur0("Andrey Andreevich", 10);
-		Form form0("Form 00", 10, 10);
+		Bureaucrat bur0("Andrey Andreevich", 146);
+		ShrubberyCreationForm form0("Home");
 		std::cout << "----------------" << std::endl;
-		std::cout << bur0;
-		std::cout << form0;
+		bur0.executeForm(form0);
 		bur0.signForm(form0);
-		std::cout << form0;
-		bur0.decrementGrade();
-		std::cout << bur0;
+		for (int i = 0; i < 9; i++)
+		{
+			bur0.incrementGrade();
+		}
 		bur0.signForm(form0);
-		std::cout << form0;
+		bur0.executeForm(form0);
 	}
 	catch (std::exception &e)
 	{
@@ -35,50 +38,33 @@ int main()
 	std::cout << std::endl;
 	try
 	{
-		std::cout << "----------------" << std::endl;
-		std::cout << "Trying to create a form with a grade higher than 1" << std::endl;
-		Form form1("Form 01", 0, 0);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	std::cout << std::endl;
-	try
-	{
-		std::cout << "----------------" << std::endl;
-		std::cout << "Trying to create a form with a grade lower than 150" << std::endl;
-		Form form2("Form 02", 151, 151);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	std::cout << std::endl;
-	try
-	{
 
 		std::cout << "----------------" << std::endl;
-		Form form3;
-		Form form4("Form 04", 1, 1);
+		RobotomyRequestForm form1("Hager Hagerovich");
 		Bureaucrat bur0("Finnan Finnanovich", 1);	
-		std::cout << std::endl;
-
-		std::cout << form3;
-		std::cout << form4;
-		std::cout << std::endl;
-
-		bur0.signForm(form4);
-		form3 = form4;
-		std::cout << form3;
-		std::cout << std::endl;
-
-		bur0.signForm(form3);
+		std::cout << "----------------" << std::endl;
+		bur0.executeForm(form1);
+		bur0.signForm(form1);
+		bur0.executeForm(form1);
 	}
 	catch (std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
 	std::cout << std::endl;
+	try 
+	{
+		std::cout << "----------------" << std::endl;
+		PresidentialPardonForm form2("Ryan Ryanovich");
+		Bureaucrat bur0("Milad Miladovich", 1);	
+		std::cout << "----------------" << std::endl;
+		bur0.executeForm(form2);
+		bur0.signForm(form2);
+		bur0.executeForm(form2);
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 	return (0);
 }

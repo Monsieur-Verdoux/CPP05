@@ -71,7 +71,7 @@ void Bureaucrat::decrementGrade()
 	std::cout << "Grade decremented successfully" << std::endl;
 }
 
-void Bureaucrat::signForm(Form &form)
+void Bureaucrat::signForm(AForm &form)
 {
 	if (form.getIsSigned())
 	{
@@ -87,6 +87,27 @@ void Bureaucrat::signForm(Form &form)
 	{
 		form.beSigned(*this);
 		std::cout << _name << " signs " << form.getName() << std::endl;
+	}
+}
+
+void Bureaucrat::executeForm(AForm const & form)
+{
+	if (form.getIsSigned())
+	{
+		if (form.getGradeToExecute() < _grade)
+		{
+			std::cout << _name << " couldn't execute " << form.getName() << " because their grade was too low" << std::endl;
+			return ;
+		}
+		else
+		{
+			form.execute(*this);
+			std::cout << _name << " executes " << form.getName() << std::endl;
+		}
+	}
+	else
+	{
+		std::cout << _name << " couldn't execute " << form.getName() << " because it was not signed" << std::endl;
 	}
 }
 

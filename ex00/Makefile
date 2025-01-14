@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME := Bureaucrat
+NAME := ex00
 CFLAGS := -Wall -Wextra -Werror
 SRC := main.cpp Bureaucrat.cpp
 OBJ := $(SRC:.cpp=.o)
